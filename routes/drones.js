@@ -7,6 +7,11 @@ const Drone = require('../models/Drone.model');
 router.get('/drones', (req, res, next) => {
   // Iteration #2: List the drones
   // ... your code here
+  Drone.find()
+    .then((allTheDronesFromDB) =>
+      res.render('drones/list', {allTheDronesFromDB})
+    )
+    .catch((err) => `Could not find all drones: ${err}`);
 });
 
 router.get('/drones/create', (req, res, next) => {
